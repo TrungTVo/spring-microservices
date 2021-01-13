@@ -1,0 +1,14 @@
+server:
+  port: 9098
+
+spring:
+  application:
+    name: student-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        enabled: true
+        register: true    # default to be true, if want to deregister -> false
