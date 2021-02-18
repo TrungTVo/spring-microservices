@@ -1,3 +1,13 @@
+### Usage
+```
+$ docker-compose up -d
+```
+
+Stop all services:
+```
+$ docker-compose down
+```
+
 ### Run consul using docker
 
 ```
