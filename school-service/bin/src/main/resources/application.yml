@@ -6,15 +6,9 @@ spring:
     name: school-service
   cloud:
     consul:
-      host: consul
+      host: localhost
       port: 8500
       discovery:
         instanceId: ${spring.application.name}:${random.value}
         enabled: true
-        register: true # default to be true, if want to deregister -> false
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+        register: true    # default to be true, if want to deregister -> false
