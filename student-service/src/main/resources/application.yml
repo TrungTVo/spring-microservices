@@ -1,5 +1,5 @@
 server:
-  port: 9098
+  port: 8080
 
 spring:
   application:
@@ -12,6 +12,7 @@ spring:
         instanceId: ${spring.application.name}:${random.value}
         enabled: true
         register: true # default to be true, if want to deregister -> false
+        query-passing: true
 
 management:
   endpoints:
