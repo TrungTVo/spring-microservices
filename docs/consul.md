@@ -59,10 +59,11 @@ Output:
 }
 ```
 
-### Check on service health
+### Check on services health
 
 ```bash
-$ curl http://localhost:9097/actuator/health
+$ curl http://localhost:8080/actuator/health
+$ curl http://localhost:8081/actuator/health
 ```
 
 If `spring actuator` isn't included in classpath -> this will failed -> service status will be `critical`
