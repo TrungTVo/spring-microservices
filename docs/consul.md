@@ -18,15 +18,15 @@ $ curl http://localhost:8500/v1/agent/checks
 Output:
 ```bash
 {
-   "service:customer-service-a94c31c614f8f7cbeb69d79b5a382cc3":{
+   "service:order-service-a94c31c614f8f7cbeb69d79b5a382cc3":{
       "Node":"trungtvo",
-      "CheckID":"service:customer-service-a94c31c614f8f7cbeb69d79b5a382cc3",
-      "Name":"Service 'customer-service' check",
+      "CheckID":"service:order-service-a94c31c614f8f7cbeb69d79b5a382cc3",
+      "Name":"Service 'order-service' check",
       "Status":"critical",
       "Notes":"",
       "Output":"HTTP GET http://10.0.0.212:9097/actuator/health: 404  Output: \u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWhitelabel Error Page\u003c/h1\u003e\u003cp\u003eThis application has no explicit mapping for /error, so you are seeing this as a fallback.\u003c/p\u003e\u003cdiv id='created'\u003eTue Jan 12 23:02:09 EST 2021\u003c/div\u003e\u003cdiv\u003eThere was an unexpected error (type=Not Found, status=404).\u003c/div\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e",
-      "ServiceID":"customer-service-a94c31c614f8f7cbeb69d79b5a382cc3",
-      "ServiceName":"customer-service",
+      "ServiceID":"order-service-a94c31c614f8f7cbeb69d79b5a382cc3",
+      "ServiceName":"order-service",
       "ServiceTags":[
          
       ],
@@ -37,15 +37,15 @@ Output:
       "CreateIndex":0,
       "ModifyIndex":0
    },
-   "service:account-service-e06c4d1855ddc34f17ec556ffbff00a9":{
+   "service:payment-service-e06c4d1855ddc34f17ec556ffbff00a9":{
       "Node":"trungtvo",
-      "CheckID":"service:account-service-e06c4d1855ddc34f17ec556ffbff00a9",
-      "Name":"Service 'account-service' check",
+      "CheckID":"service:payment-service-e06c4d1855ddc34f17ec556ffbff00a9",
+      "Name":"Service 'payment-service' check",
       "Status":"critical",
       "Notes":"",
       "Output":"HTTP GET http://10.0.0.212:9098/actuator/health: 404  Output: \u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWhitelabel Error Page\u003c/h1\u003e\u003cp\u003eThis application has no explicit mapping for /error, so you are seeing this as a fallback.\u003c/p\u003e\u003cdiv id='created'\u003eTue Jan 12 23:02:15 EST 2021\u003c/div\u003e\u003cdiv\u003eThere was an unexpected error (type=Not Found, status=404).\u003c/div\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e",
-      "ServiceID":"account-service-e06c4d1855ddc34f17ec556ffbff00a9",
-      "ServiceName":"account-service",
+      "ServiceID":"payment-service-e06c4d1855ddc34f17ec556ffbff00a9",
+      "ServiceName":"payment-service",
       "ServiceTags":[
          
       ],
@@ -64,6 +64,7 @@ Output:
 ```bash
 $ curl http://localhost:8080/actuator/health
 $ curl http://localhost:8081/actuator/health
+...
 ```
 
 If `spring actuator` isn't included in classpath -> this will failed -> service status will be `critical`
@@ -71,7 +72,7 @@ If `spring actuator` isn't included in classpath -> this will failed -> service 
 ### Deregister a service instance
 
 ```bash
-$ consul services deregister -id=account-service-e06c4d1855ddc34f17ec556ffbff00a9
+$ consul services deregister -id=payment-service-e06c4d1855ddc34f17ec556ffbff00a9
 ```
 
 id: ID of the service instance
