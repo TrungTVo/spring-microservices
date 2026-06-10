@@ -9,21 +9,21 @@ services:
       - '8600:8600/udp'
     networks:
       - consul-net
-  student-service:
-    container_name: student-service
-    hostname: student-service
+  account-service:
+    container_name: account-service
+    hostname: account-service
     build:
-      context: ./student-service/
+      context: ./account-service/
       dockerfile: Dockerfile
     ports:
       - '8080:8080'
     networks:
       - consul-net
-  school-service:
-    container_name: school-service
-    hostname: school-service
+  customer-service:
+    container_name: customer-service
+    hostname: customer-service
     build:
-      context: ./school-service/
+      context: ./customer-service/
       dockerfile: Dockerfile
     ports:
       - '8081:8080'
