@@ -1,6 +1,5 @@
 package com.example.orderservice.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +12,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("order")
 public class OrderController {
 
-	@Autowired
-	WebClient.Builder webClientBuilder;
+	final WebClient.Builder webClientBuilder;
+
+	OrderController(WebClient.Builder webClientBuilder) {
+		this.webClientBuilder = webClientBuilder;
+	}
 
 	@GetMapping
 	public Mono<ResponseEntity<String>> obtainGreetMsg() {
