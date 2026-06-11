@@ -1,6 +1,5 @@
 package com.example.paymentservice.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +12,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("payment")
 public class PaymentController {
 
-	@Autowired
-	WebClient.Builder webClientBuilder;
+	final WebClient.Builder webClientBuilder;
+
+	PaymentController(WebClient.Builder webClientBuilder) {
+		this.webClientBuilder = webClientBuilder;
+	}
 
 	@GetMapping
 	public Mono<ResponseEntity<String>> greetPayment() {
