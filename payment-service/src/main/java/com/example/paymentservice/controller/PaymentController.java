@@ -1,11 +1,12 @@
 package com.example.paymentservice.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
+
+import com.example.paymentservice.services.PaymentService;
 
 import reactor.core.publisher.Mono;
 
@@ -13,17 +14,15 @@ import reactor.core.publisher.Mono;
 @RequestMapping("payment")
 public class PaymentController {
 
-	@Autowired
-	WebClient.Builder webClientBuilder;
+	private final PaymentService paymentService;
+
+	PaymentController(@Qualifier("paymentServiceImpl") PaymentService paymentService) {
+		this.paymentService = paymentService;
+	}
 
 	@GetMapping
-	public Mono<ResponseEntity<String>> greetPayment() {
-		return webClientBuilder.build()
-			.get()
-			.uri("http://notification-service/notification")
-			.retrieve()
-			.bodyToMono(String.class)
-			.map(body -> ResponseEntity.ok("Hello from payment-service! Message from notification-service: " + body));
+	public Mono<ResponseEntity<String>> makePayment() {
+		return this.paymentService.makePayment().map(ResponseEntity::ok);
 	}
 
 }
