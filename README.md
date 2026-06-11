@@ -25,3 +25,7 @@ docker exec consul-container consul members
 ```
 
 Access: `localhost:8500`
+
+# Use cases
+
+- [**`circuit-breaker`**](https://github.com/TrungTVo/spring-microservices/tree/circuit-breaker): Implementation of a circuit breaker pattern to handle failures in microservices. In this branch, the circuit breaker is implemented using `Resilience4j` to provide fault tolerance and resilience for `payment-service`.
